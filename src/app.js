@@ -1,5 +1,9 @@
 const tbody = document.querySelector("tbody")
 const empform = document.querySelector('#empForm')
+const nameInput = document.querySelector('#name')
+const idInput = document.querySelector('#id')
+const cityInput = document.querySelector('#city')
+const salaryInput = document.querySelector('#salary')
 
 
 employees = [
@@ -21,7 +25,35 @@ function save() {
 
 function createEmployee() {
     console.log('craete..')
+    // const name = nameInput.value
+    const emp = { 
+        id: generateId(),
+        name: nameInput.value,
+        city: cityInput.value,
+        salary: salaryInput.value
+    }
+    console.log(emp)
+    employees.push(emp)
+    renderTable()
+    resetEmpForm()
+
 }
+
+function resetEmpForm() {
+    nameInput.value = ''
+    idInput.value = ''
+    cityInput.value = ''
+    salaryInput.value = ''
+}
+
+function generateId() {
+    const size = employees.length
+    const lastEmp = employees[size-1]
+    // console.log(lastEmp.id)
+    return lastEmp.id+1
+}
+
+
 function updateEmployee() {}
 
 function renderTable() {
