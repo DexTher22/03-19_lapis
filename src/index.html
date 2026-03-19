@@ -10,7 +10,10 @@
 <body>
   <div class="container">
     <h1>Dolgozók</h1>
-    <button class="btn btn-success">Hozzáadás</button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Hozzáadás
+    </button>
       <table class="table table-striped">
         <thead>
             <tr>
@@ -24,6 +27,47 @@
         <tbody id="tbody"></tbody>
     </table>
   </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Hozzáadás</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form id="empForm">
+          <div>
+            <label for="id" class="form-label">Id</label>
+            <input type="text" class="form-control" id="id" readonly>
+          </div>
+          <div>
+            <label for="name" class="form-label">Név</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div>
+            <label for="city" class="form-label">Település</label>
+            <input type="text" class="form-control" id="city">
+          </div>
+          <div>
+            <label for="salary" class="form-label">Fizetés</label>
+            <input type="text" class="form-control" id="salary">
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
+        <button type="submit" class="btn btn-primary" form="empForm">Mentés</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <script src="bootstrap.js"></script>
   <script src="app.js"></script>  
 </body>

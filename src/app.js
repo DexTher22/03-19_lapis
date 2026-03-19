@@ -1,4 +1,5 @@
 const tbody = document.querySelector("tbody")
+const empform = document.querySelector('#empForm')
 
 
 employees = [
@@ -9,13 +10,33 @@ employees = [
     { id: 5, name: 'Fel Áron', city: 'Szeged', salary: '397'}
 ]
 
-var rows = ''
-employees.forEach(emp => {
-    rows += makeRow(emp)
+empform.addEventListener('submit', (event) => {
+    event.preventDefault()
+    save()
 })
-tbody.innerHTML = rows
+
+function save() {
+    createEmployee()
+}
+
+function createEmployee() {
+    console.log('craete..')
+}
+function updateEmployee() {}
+
+function renderTable() {
+    
+    var rows = ''
+    employees.forEach(emp => {
+        rows += makeRow(emp)
+    })
+    tbody.innerHTML = rows
+
+}
+renderTable()
 
 function makeRow(emp) {
+
     return `
     <tr>
         <td>${emp.id}</td>
@@ -23,7 +44,7 @@ function makeRow(emp) {
         <td>${emp.city}</td>
         <td>${emp.salary}</td>
         <td>
-            <button class="btn btn-danger">Törlés</button>
+            <button class="btn btn-danger"  onclick="deleteEmployee(${emp.id})">Törlés</button>
         </td>
         <td>
             <button class="btn btn-primary">Szerkesztés</button>
@@ -31,3 +52,12 @@ function makeRow(emp) {
     </tr>
     `
 }
+
+function deleteEmployee(id) {
+    console.log('Törlés...')
+    console.log(id)
+
+    employees = employees.filter(emp => emp.id != id)
+    renderTable()
+}
+
